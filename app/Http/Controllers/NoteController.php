@@ -14,7 +14,10 @@ class NoteController extends Controller
     {
         //
         // $notes = Note::query()->orderBy("created_at","desc")->get(); //elquent collection 
-        $notes = Note::query()->orderBy("created_at","desc")->paginate(5);
+        $notes = Note::query()
+        ->where("user_id", auth()->user()->id)
+        ->orderBy("created_at","desc")
+        ->paginate(5);
         return view('note.index',['notes'=> $notes]);
     }
 
@@ -36,7 +39,7 @@ class NoteController extends Controller
         $data = $request->validate([
             'note'=>['required','string']
         ]);
-        $data['user_id'] = 1;
+        $data['user_id'] = $request->user()->id;
         //store data in db 
         $note =  Note::create($data);
         // return and have session message 
@@ -49,6 +52,9 @@ class NoteController extends Controller
     public function show(Note $note)
     {
         //
+        if($note->user_id !== request()->user()->id){
+            abort(403);
+        }
         return view('note.show',['note'=> $note]);
     }
 
@@ -58,6 +64,9 @@ class NoteController extends Controller
     public function edit(Note $note)
     {
         //
+           if($note->user_id !== request()->user()->id){
+            abort(403);
+        }
         return view('note.edit',['note'=> $note]);
     }
 
@@ -67,6 +76,9 @@ class NoteController extends Controller
     public function update(Request $request, Note $note)
     {
         //
+           if($note->user_id !== request()->user()->id){
+            abort(403);
+        }
         //validate data from user 
         $data = $request->validate([
             'note'=>['required','string']
@@ -85,6 +97,9 @@ class NoteController extends Controller
     public function destroy(Note $note)
     {
         //
+           if($note->user_id !== request()->user()->id){
+            abort(403);
+        }
         $note->delete();
         
         return redirect()->route('note.index')->with('message','note is deleted');

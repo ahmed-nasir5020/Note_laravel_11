@@ -1,6 +1,6 @@
 
 {{-- extent or call layout --}}
-<x-layout>
+<x-app-layout>
     <!-- You must be the change you wish to see in the world. - Mahatma Gandhi -->
         <h1>
             edit note
@@ -16,5 +16,5 @@
                 <button>submit</button>
             </div>
         </form>
-</x-layout>
+</x-app-layout>
 

@@ -1,5 +1,5 @@
 {{-- extent or call layout or use it --}}
-<x-layout>
+<x-app-layout>
     <!-- You must be the change you wish to see in the world. - Mahatma Gandhi -->
         <div>
             <h1>
@@ -12,4 +12,4 @@
                 <button>submit</button>
             </form>
         </div>
-</x-layout>
+</x-app-layout>

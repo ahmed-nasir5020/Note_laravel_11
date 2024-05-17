@@ -1,6 +1,6 @@
 
 {{-- extent or call layout --}}
-<x-layout>
+<x-app-layout>
     <!-- You must be the change you wish to see in the world. - Mahatma Gandhi -->
 
         index 
@@ -22,6 +22,6 @@
       
         </table>
         {{ $notes->links() }}
-</x-layout>
+</x-app-layout>
 
 

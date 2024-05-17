@@ -1,11 +1,13 @@
 
 {{-- extent or call layout --}}
-<x-layout>
+<x-app-layout>
     <!-- You must be the change you wish to see in the world. - Mahatma Gandhi -->
     
         <div>
             <h1>
                 note date {{ $note->created_at }}
+                <br>
+                note user {{ Auth::user()->name }}
             </h1>
             <div>
                 <a href="{{ route('note.edit',$note->id) }}">edit</a>
@@ -21,7 +23,7 @@
                 </h3>
             </div>
         </div>
-</x-layout>
+</x-app-layout>>
 
 
 
